@@ -3,7 +3,6 @@ import { IonicPage, NavController, MenuController, LoadingController, ToastContr
 import { AddUsersPage } from '../../Users/add-users/add-users';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditUsersPage } from '../../Users/edit-users/edit-users';
-import * as firebase from 'firebase';
 import { FeedbackPage } from '../../Feedback/feedback/feedback';
 
 
@@ -17,7 +16,12 @@ export class UsersPage {
   Users: Array<any> = [];
   UsersLoaded: Array<any> = [];
 
-  searchBar: string;
+  searchBar: string = '';
+
+  // defRef = this.db.list(`Users`, ref => ref.orderByChild("Name").limitToFirst(1));
+  // searchRef = this.db.list(`Users`, ref => ref.orderByChild("Name").startAt(this.searchBar).endAt(this.searchBar + "\uf8ff").limitToFirst(1));
+  // mainRef;
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -28,6 +32,7 @@ export class UsersPage {
   ) {
     this.menuCtrl.enable(true);
     this.getUsers();
+    // this.mainRef = this.defRef;
   }
 
   getUsers() {
@@ -37,13 +42,21 @@ export class UsersPage {
     });
     loading.present();
 
+    // if (this.searchBar) {
+    //   this.mainRef = this.searchRef;
+    // } else {
+    //   this.mainRef = this.defRef;
+    // }
 
-    this.db.list(`Users`).snapshotChanges().subscribe(snap => {
+
+
+
+
+    this.db.list("Users").snapshotChanges().subscribe(snap => {
       let tempArray: Array<any> = [];
       snap.forEach(snip => {
         let temp: any = snip.payload.val();
         temp.key = snip.key;
-
         tempArray.push(temp);
       })
       this.Users = tempArray;
@@ -80,7 +93,6 @@ export class UsersPage {
 
 
 
-  users = [];
   page = 0;
   maximumPages = 3;
 

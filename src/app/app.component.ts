@@ -7,6 +7,7 @@ import { UsersPage } from '../pages/MainPages/users/users';
 import { LoginPage } from '../pages/Auth/login/login';
 import * as firebase from 'firebase';
 import { PromotionPage } from '../pages/promotion/promotion';
+import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
 
 
 
@@ -33,10 +34,11 @@ export class MyApp {
   ) {
     this.initializeApp();
     this.pages = [
-      { title: 'Users', component: UsersPage, icon: "ios-people" },
+      { title: 'Clients', component: UsersPage, icon: "ios-people" },
       { title: 'Promotions', component: PromotionPage, icon: "text" },
+      { title: 'Selective Promotions', component: SPromotionsPage, icon: "text" },
     ];
-    this.activePage = this.pages[1];
+    this.activePage = this.pages[2];
   }
 
   initializeApp() {

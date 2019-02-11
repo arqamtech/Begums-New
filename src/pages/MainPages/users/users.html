@@ -9,6 +9,7 @@
 
 
 <ion-content padding>
+
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-md-4>
@@ -82,10 +83,10 @@
                 <h2>{{u.AverageRatings | number:'1.0-0'}}</h2>
               </ion-col>
               <ion-col col-12 col-md-2 text-center>
-                <button ion-button  (click)="editUser(u)">
+                <button ion-button (click)="editUser(u)">
                   Edit
                 </button>
-                <button ion-button  (click)="feedback(u)">
+                <button ion-button (click)="feedback(u)">
                   Take Feedback
                 </button>
               </ion-col>

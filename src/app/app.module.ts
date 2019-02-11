@@ -17,6 +17,7 @@ import { FeedbackPage } from '../pages/Feedback/feedback/feedback';
 import { StarRatingModule } from 'ionic3-star-rating';
 import { HttpClientModule } from '@angular/common/http';
 import { PromotionPage } from '../pages/promotion/promotion';
+import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
 
 
 firebase.initializeApp(firebaseCred);
@@ -31,6 +32,7 @@ firebase.initializeApp(firebaseCred);
     FeedbackPage,
     LoaderPage,
     PromotionPage,
+    SPromotionsPage,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ firebase.initializeApp(firebaseCred);
     FeedbackPage,
     LoaderPage,
     PromotionPage,
+    SPromotionsPage,
   ],
   providers: [
     StatusBar,

@@ -15,7 +15,7 @@ export class AddUsersPage {
   userLabel = "User's";
 
   name: string;
-  dob: string='';
+  dob: string = '';
   phone: string;
 
 
@@ -48,7 +48,6 @@ export class AddUsersPage {
       content: 'Adding Client...'
     });
     loading.present();
-
 
     firebase.database().ref("Users").push({
       Name: this.name,

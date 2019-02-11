@@ -28,6 +28,7 @@
                 <p ion-text padding-vertical>Characters Remaining {{256 - mess.length}}</p>
                 <button ion-button round (click)="checkData()">Send SMS</button>
               </ion-card-content>
+              {{Users | json}}
             </ion-col>
           </ion-row>
         </ion-card>
