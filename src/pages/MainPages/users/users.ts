@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, LoadingController, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController, LoadingController, ToastController, ModalController } from 'ionic-angular';
 import { AddUsersPage } from '../../Users/add-users/add-users';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditUsersPage } from '../../Users/edit-users/edit-users';
 import * as firebase from 'firebase';
+import { FeedbackPage } from '../../Feedback/feedback/feedback';
 
 
 @IonicPage()
@@ -14,13 +15,14 @@ import * as firebase from 'firebase';
 export class UsersPage {
 
   Users: Array<any> = [];
+  UsersLoaded: Array<any> = [];
 
-
+  searchBar: string;
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public toastCtrl: ToastController,
-    public alertCtrl: AlertController,
+    public modalController: ModalController,
     public loadingCtrl: LoadingController,
     public db: AngularFireDatabase,
   ) {
@@ -31,64 +33,82 @@ export class UsersPage {
   getUsers() {
 
     let loading = this.loadingCtrl.create({
-      content: 'Logging In...'
+      content: 'Getting Users...'
     });
     loading.present();
 
 
     this.db.list(`Users`).snapshotChanges().subscribe(snap => {
-      this.Users = [];
+      let tempArray: Array<any> = [];
       snap.forEach(snip => {
         let temp: any = snip.payload.val();
         temp.key = snip.key;
-        console.log(temp);
 
-        this.Users.push(temp);
+        tempArray.push(temp);
       })
+      this.Users = tempArray;
+      this.UsersLoaded = tempArray;
       loading.dismiss();
     })
   }
 
 
+  feedback(u) {
+    const modal = this.modalController.create(FeedbackPage, { user: u })
+    modal.present();
+  }
 
-  delConfirmUser(u) {
-    let confirm = this.alertCtrl.create({
-      title: 'Are you sure you want to Delete User ?',
-      message: 'This data cannot be recovered again.',
-      buttons: [
-        {
-          text: 'No, Its a mistake',
-          handler: () => {
-
-          }
-        },
-        {
-          text: "Yes, I'm sure",
-          handler: () => {
-            this.delUser(u);
-          }
+  initializeItems(): void {
+    this.Users = this.UsersLoaded;
+  }
+  getItems(searchbar) {
+    this.initializeItems();
+    let q = searchbar;
+    if (!q) {
+      return;
+    }
+    this.Users = this.Users.filter((v) => {
+      if ((v.Name) && q) {
+        if (v.Name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
         }
-      ]
+        return false;
+      }
     });
-    confirm.present();
   }
-  delUser(u) {
-    let loading = this.loadingCtrl.create({
-      content: 'Logging In...'
-    });
-    loading.present();
 
-    firebase.database().ref("Users").child(u.key).remove().then(() => {
-      loading.dismiss();
-      this.presentToast(u.Name + " " + "deleted");
-    })
-  }
+
+
+
+  users = [];
+  page = 0;
+  maximumPages = 3;
+
+
+
+  // loadUsers(infiniteScroll?) {
+  //   this.httpClient.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
+  //   .subscribe(res => {
+  //     this.users = this.users.concat(res['results']);
+  //     if (infiniteScroll) {
+  //       infiniteScroll.complete();
+  //     }
+  //   })
+  // }
+
+  // loadMore(infiniteScroll) {
+  //   this.page++;
+  //   this.loadUsers(infiniteScroll);
+
+  //   if (this.page === this.maximumPages) {
+  //     infiniteScroll.enable(false);
+  //   }
+  // }
 
 
 
   editUser(u) { this.navCtrl.push(EditUsersPage, { user: u }); }
   addUser() { this.navCtrl.push(AddUsersPage); }
-
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

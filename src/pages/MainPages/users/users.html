@@ -3,77 +3,67 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Users</ion-title>
+    <ion-title>Clients</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
-  <button ion-button round float-right (click)="addUser()">
-    <ion-icon padding-right name="md-add"></ion-icon>
-    Add User
-  </button>
-
-
-  <!-- <ion-grid class="strip">
-    <ion-card class="roundCard flpAnim">
-
-      <ion-row class="tableTop" padding>
-        <ion-col col-3>
-          <h2>Name</h2>
-        </ion-col>
-        <ion-col col-4>
-          <h2>Email</h2>
-        </ion-col>
-        <ion-col col-2>
-          <h2>Phone</h2>
-        </ion-col>
-      </ion-row>
-
-      <ion-card-content>
-        <ion-row padding *ngFor="let u of Users">
-          <ion-col col-3>
-            <h2>{{u.Name}}</h2>
-          </ion-col>
-          <ion-col col-4>
-            <h2>{{u.Email}}</h2>
-          </ion-col>
-          <ion-col col-2>
-            <h2>{{u.Phone}}</h2>
-          </ion-col>
-          <ion-col col-3 text-center>
-            <button ion-button icon-only clear (click)="editUser(u)">
-              <ion-icon name="md-create"></ion-icon>
-            </button>
-            <button ion-button icon-only clear (click)="delConfirmUser(u)">
-              <ion-icon name="md-trash"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-
-      </ion-card-content>
-    </ion-card>
-
-  </ion-grid> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md-4>
+        <ion-searchbar item-end animated="true" placeholder="Search by name" [(ngModel)]="searchBar"
+          (ionInput)="getItems(searchBar)"></ion-searchbar>
+      </ion-col>
+      <ion-col col-12 col-md-6 push-md-2>
+        <button ion-button round float-right (click)="addUser()">
+          <ion-icon padding-right name="md-add"></ion-icon>
+          Add Client
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
 
 
-  <ion-grid class="strip">
+
+  <ion-grid class="strip" *ngIf="!Users.length">
     <ion-row>
       <ion-col push-md-2 col-md-8 col-12>
         <ion-card class="roundCard flpAnim">
+          <ion-card-content text-center>
+            <ion-card-title>No Clients</ion-card-title>
+            <button ion-button round (click)="addUser()">
+              <ion-icon padding-right name="md-add"></ion-icon>
+              Add Client
+            </button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <ion-grid class="strip" *ngIf="Users.length">
+    <ion-row>
+      <ion-col push-md-2 col-md-8 col-12>
+        <ion-card class="roundCard slide-in-left">
 
           <ion-row class="tableTop" padding>
             <ion-col col-12 col-md-3>
               <h2 ion-text color="tableTopC">Name</h2>
             </ion-col>
-            <ion-col col-12 col-md-4>
-              <h2 ion-text color="tableTopC">Email</h2>
-            </ion-col>
             <ion-col col-12 col-md-2>
               <h2 ion-text color="tableTopC">Phone</h2>
+            </ion-col>
+            <ion-col col-12 col-md-2>
+              <h2 ion-text color="tableTopC">DOB</h2>
+            </ion-col>
+            <ion-col col-12 col-md-1>
+              <h2 ion-text color="tableTopC">Rating</h2>
             </ion-col>
           </ion-row>
 
@@ -82,18 +72,21 @@
               <ion-col col-12 col-md-3>
                 <h2>{{u.Name}}</h2>
               </ion-col>
-              <ion-col col-12 col-md-4>
-                <h2>{{u.Email}}</h2>
-              </ion-col>
               <ion-col col-12 col-md-2>
                 <h2>{{u.Phone}}</h2>
               </ion-col>
-              <ion-col col-12 col-md-3 text-center>
-                <button ion-button icon-only clear (click)="editUser(u)">
-                  <ion-icon name="md-create"></ion-icon>
+              <ion-col col-12 col-md-2>
+                <h2>{{u.DOB | date : 'd MMM, y'}}</h2>
+              </ion-col>
+              <ion-col col-12 col-md-1 text-center>
+                <h2>{{u.AverageRatings | number:'1.0-0'}}</h2>
+              </ion-col>
+              <ion-col col-12 col-md-2 text-center>
+                <button ion-button  (click)="editUser(u)">
+                  Edit
                 </button>
-                <button ion-button icon-only clear (click)="delConfirmUser(u)">
-                  <ion-icon name="md-trash"></ion-icon>
+                <button ion-button  (click)="feedback(u)">
+                  Take Feedback
                 </button>
               </ion-col>
             </ion-row>
@@ -103,6 +96,11 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
+  <!-- <ion-infinite-scroll (ionInfinite)="loadMore($event)" loadingSpinner="bubbles" loadingText="Loading Users...">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
 
 
 </ion-content>

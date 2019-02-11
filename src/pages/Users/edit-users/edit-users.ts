@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { UsersPage } from '../../MainPages/users/users';
 
 
 @IonicPage()
@@ -19,33 +18,31 @@ export class EditUsersPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     public menuCtrl: MenuController,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
   ) {
-    console.log(this.user);
-    
     this.menuCtrl.enable(true);
   }
 
   checkData() {
     if (this.user.Name) {
-      if (this.user.Email) {
-        if (this.user.Phone) {
-          if (this.user.Phone.length == 10) {
-            this.updateUser();
-          } else { this.presentToast("Enter a valid Phonenumber") }
-        } else { this.presentToast("Enter" + this.userLabel + "Phone number") }
-      } else { this.presentToast("Enter" + this.userLabel + "Email") }
+      if (this.user.Phone) {
+        if (this.user.Phone.length == 10) {
+          this.updateUser();
+        } else { this.presentToast("Enter a valid Phonenumber") }
+      } else { this.presentToast("Enter" + this.userLabel + "Phonenumber") }
     } else { this.presentToast("Enter" + this.userLabel + "Name") }
   }
 
 
 
 
+
   updateUser() {
     let loading = this.loadingCtrl.create({
-      content: 'Updating User...'
+      content: 'Updating Client...'
     });
     loading.present();
 
@@ -63,6 +60,39 @@ export class EditUsersPage {
 
   }
 
+  delConfirmUser() {
+    let confirm = this.alertCtrl.create({
+      title: 'Are you sure you want to Delete Client ?',
+      message: 'This data cannot be recovered again.',
+      buttons: [
+        {
+          text: 'No, Its a mistake',
+          handler: () => {
+
+          }
+        },
+        {
+          text: "Yes, I'm sure",
+          handler: () => {
+            this.delUser();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+  delUser() {
+    let loading = this.loadingCtrl.create({
+      content: 'Deleting Client...'
+    });
+    loading.present();
+
+    firebase.database().ref("Users").child(this.user.key).remove().then(() => {
+      this.navCtrl.pop();
+      loading.dismiss();
+      this.presentToast(this.user.Name + " " + "deleted");
+    })
+  }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

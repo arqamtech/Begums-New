@@ -9,15 +9,14 @@ import { firebaseCred } from './firebaseCred';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LoginPage } from '../pages/Auth/login/login';
-import { DashboardPage } from '../pages/MainPages/dashboard/dashboard';
 import { UsersPage } from '../pages/MainPages/users/users';
 import { AddUsersPage } from '../pages/Users/add-users/add-users';
 import { EditUsersPage } from '../pages/Users/edit-users/edit-users';
 import { LoaderPage } from '../pages/Support/loader/loader';
-import { ProfilePage } from '../pages/Profile/profile/profile';
-import { EditProfilePage } from '../pages/Profile/edit-profile/edit-profile';
-import { AddAdminPage } from '../pages/MainPages/add-admin/add-admin';
-import { ChangePassPage } from '../pages/Auth/change-pass/change-pass';
+import { FeedbackPage } from '../pages/Feedback/feedback/feedback';
+import { StarRatingModule } from 'ionic3-star-rating';
+import { HttpClientModule } from '@angular/common/http';
+import { PromotionPage } from '../pages/promotion/promotion';
 
 
 firebase.initializeApp(firebaseCred);
@@ -26,19 +25,18 @@ firebase.initializeApp(firebaseCred);
   declarations: [
     MyApp,
     LoginPage,
-    DashboardPage,
     UsersPage,
     AddUsersPage,
     EditUsersPage,
+    FeedbackPage,
     LoaderPage,
-    ProfilePage,
-    EditProfilePage,
-    AddAdminPage,
-    ChangePassPage,
+    PromotionPage,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
+    StarRatingModule,
     AngularFireModule.initializeApp(firebaseCred),
     AngularFireDatabaseModule,
   ],
@@ -46,15 +44,12 @@ firebase.initializeApp(firebaseCred);
   entryComponents: [
     MyApp,
     LoginPage,
-    DashboardPage,
     UsersPage,
     AddUsersPage,
     EditUsersPage,
+    FeedbackPage,
     LoaderPage,
-    ProfilePage,
-    EditProfilePage,
-    AddAdminPage,
-    ChangePassPage,
+    PromotionPage,
   ],
   providers: [
     StatusBar,

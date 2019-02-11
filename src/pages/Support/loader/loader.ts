@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
+import * as firebase from 'firebase';
+import { UsersPage } from '../../MainPages/users/users';
+import { LoginPage } from '../../Auth/login/login';
 
 @IonicPage()
 @Component({
@@ -26,6 +29,16 @@ export class LoaderPage {
     this.menuCtrl.enable(false);
 
   }
+  ionViewDidEnter(){
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.navCtrl.setRoot(UsersPage);
+      }
+      else {
+        this.navCtrl.setRoot(LoginPage);
+      }
+    });
 
+  }
 
 }

@@ -3,12 +3,10 @@ import { Nav, Platform, ToastController, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoaderPage } from '../pages/Support/loader/loader';
-import { DashboardPage } from '../pages/MainPages/dashboard/dashboard';
-import { AddAdminPage } from '../pages/MainPages/add-admin/add-admin';
 import { UsersPage } from '../pages/MainPages/users/users';
-import { ProfilePage } from '../pages/Profile/profile/profile';
 import { LoginPage } from '../pages/Auth/login/login';
 import * as firebase from 'firebase';
+import { PromotionPage } from '../pages/promotion/promotion';
 
 
 
@@ -30,17 +28,15 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public toastCtrl: ToastController,
-    public alertCtrl : AlertController,
+    public alertCtrl: AlertController,
     public splashScreen: SplashScreen
   ) {
     this.initializeApp();
     this.pages = [
-      { title: 'DashBoard', component: DashboardPage, icon: "ios-analytics" },
       { title: 'Users', component: UsersPage, icon: "ios-people" },
-      { title: 'Add Admin', component: AddAdminPage, icon: "ios-person" },
-      { title: 'Profile', component: ProfilePage, icon: "ios-people" },
+      { title: 'Promotions', component: PromotionPage, icon: "text" },
     ];
-    this.activePage = this.pages[0];
+    this.activePage = this.pages[1];
   }
 
   initializeApp() {
@@ -51,7 +47,7 @@ export class MyApp {
             if (itemSnap.exists()) {
               var welMsg = "Welcome" + " " + itemSnap.val().Name;
               // Managing Root Page
-              this.rootPage = DashboardPage;
+              this.rootPage = PromotionPage;
 
 
               this.presentToast(welMsg);

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { DashboardPage } from '../../MainPages/dashboard/dashboard';
 import moment from 'moment';
+import { UsersPage } from '../../MainPages/users/users';
 
 
 @IonicPage()
@@ -51,7 +51,7 @@ export class LoginPage {
       loading.dismiss();
     }).then(() => {
       firebase.database().ref("Admin Data/Admins").child(firebase.auth().currentUser.uid).child("Last Login").set(moment().format()).then(() => {
-        this.navCtrl.setRoot(DashboardPage);
+        this.navCtrl.setRoot(UsersPage);
         loading.dismiss();
       })
 

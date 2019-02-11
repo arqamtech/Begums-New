@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Add User</ion-title>
+    <ion-title>Add Client</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="mainCol" push-md-4 col-md-4 col-12>
-        <ion-card class="flpAnim" >
+        <ion-card class="flpAnim">
           <ion-row>
             <ion-col col-12 col-md-8 push-md-2>
               <ion-card-content>
@@ -21,13 +21,7 @@
 
                 <ion-item margin-vertical round>
                   <ion-label stacked>Name</ion-label>
-                  <ion-input type="text" (keyup.enter)="checkData()" [(ngModel)]="name"></ion-input>
-                </ion-item>
-
-
-                <ion-item margin-vertical round>
-                  <ion-label stacked>Email</ion-label>
-                  <ion-input type="email" (keyup.enter)="checkData()" [(ngModel)]="mail"></ion-input>
+                  <ion-input type="text" autofocus (keyup.enter)="checkData()" [(ngModel)]="name"></ion-input>
                 </ion-item>
 
                 <ion-item margin-vertical round>
@@ -36,7 +30,13 @@
                   <ion-input type="number" (keyup.enter)="checkData()" [(ngModel)]="phone"></ion-input>
                 </ion-item>
 
-                <button ion-button round (click)="checkData()">Add User</button>
+                <ion-item margin-vertical round>
+                  <ion-label stacked>Date of Birth</ion-label>
+                  <ion-datetime display-format="MMM DD, YYYY" (keyup.enter)="checkData()" [(ngModel)]="dob">
+                  </ion-datetime>
+                </ion-item>
+
+                <button ion-button round (click)="checkData()">Add Client</button>
 
 
               </ion-card-content>

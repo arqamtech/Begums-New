@@ -23,17 +23,24 @@
               <ion-input type="text" (keyup.enter)="checkData()" [(ngModel)]="user.Name"></ion-input>
             </ion-item>
 
-            <ion-item margin-vertical round>
-              <ion-label stacked>Email</ion-label>
-              <ion-input type="email" (keyup.enter)="checkData()" [(ngModel)]="user.Email"></ion-input>
-            </ion-item>
 
             <ion-item margin-vertical round>
               <ion-label stacked>Phone</ion-label>
               <ion-input type="number" (keyup.enter)="checkData()" [(ngModel)]="user.Phone"></ion-input>
             </ion-item>
 
+            <ion-item margin-vertical round>
+              <ion-label stacked>Date of Birth</ion-label>
+              <ion-datetime display-format="MMM DD, YYYY" (keyup.enter)="checkData()" [(ngModel)]="user.DOB">
+              </ion-datetime>
+            </ion-item>
+
             <button ion-button round (click)="checkData()">update</button>
+
+
+            <button ion-button float-right clear (click)="delConfirmUser(u)">
+              Delete
+            </button>
 
           </ion-card-content>
         </ion-card>

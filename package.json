@@ -1,8 +1,8 @@
 {
-  "name": "sampleAdmin",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "Begums",
+  "version": "1.0.0",
+  "author": "Mohammed Arqam",
+  "homepage": "https://arqam.tech/",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -27,6 +27,7 @@
     "angularfire2": "^5.1.1",
     "firebase": "^5.8.0",
     "ionic-angular": "3.9.2",
+    "ionic3-star-rating": "^1.1.5",
     "ionicons": "3.0.0",
     "moment": "^2.24.0",
     "rxjs": "^6.3.3",
