@@ -23,8 +23,7 @@ export class EditUsersPage {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
   ) {
-    this.menuCtrl.enable(true);
-  }
+ this.menuCtrl.enable(false);  }
 
   checkData() {
     if (this.user.Name) {

@@ -1,20 +1,28 @@
 .bgMain {
-    background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    // background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    // background-image: linear-gradient(to right, #f0eeeb, #edeae6, #e9e6e2, #e6e3dd, #e2dfd9);
+    // background-image: linear-gradient(to right, #f0eeeb, #edeae6, #e9e6e2, #e6e3dd, #e2dfd9);
+    background-image: linear-gradient(to right, #f2efee , #e1ded8);
     width: 100wh !important ;
     height: 100vh !important ;
-    color: #fff !important;
-    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB) !important ;
-    background-size: 400% 400% !important ;
-    -webkit-animation: Gradient 7s ease infinite !important ;
-    -moz-animation: Gradient 7s ease infinite !important ;
-    animation: Gradient 7s ease infinite !important ;
+    // color: #fff !important;
+    // background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB) !important ;
+    // background-size: 400% 400% !important ;
+    // -webkit-animation: Gradient 7s ease infinite !important ;
+    // -moz-animation: Gradient 7s ease infinite !important ;
+    // animation: Gradient 7s ease infinite !important ;
 }
 h2{
   font-weight: 600 !important;
 }
 .content{
-  background: map-get($colors,light);
-}
+    // background-image: linear-gradient(to right, #f0eeeb, #edeae6, #e9e6e2, #e6e3dd, #e2dfd9);
+    background-image: linear-gradient(to right, #f2efee , #e1ded8);
+  }
+
+  .clearBg{
+    background: rgba($color: #000000, $alpha: 0)
+  }
 
 .menuContent{
   ::-webkit-scrollbar {

@@ -30,8 +30,7 @@ export class UsersPage {
     public loadingCtrl: LoadingController,
     public db: AngularFireDatabase,
   ) {
-    this.menuCtrl.enable(true);
-    this.getUsers();
+ this.menuCtrl.enable(false);    this.getUsers();
     // this.mainRef = this.defRef;
   }
 

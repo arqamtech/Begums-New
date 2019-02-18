@@ -1,35 +1,46 @@
-<ion-content class="bgMain">
+<ion-content padding>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col class="mainCol" push-md-4 col-md-4 col-12>
-        <ion-card class="flpAnim" >
-          <ion-row>
-            <ion-col col-12 col-md-8 push-md-2>
-              <ion-card-content>
-                <ion-card-title>Client Dashboard</ion-card-title>
+  <ion-slides>
+    <ion-slide>
 
-                <ion-item margin-vertical round>
-                  <ion-label stacked>Email</ion-label>
-                  <ion-input type="email" (keyup.enter)="checkData()" [(ngModel)]="mail"></ion-input>
-                </ion-item>
-
-                <ion-item margin-vertical round >
-                  <ion-icon name="home"></ion-icon>
-                  <ion-label stacked>Password</ion-label>
-                  <ion-input type="password" (keyup.enter)="checkData()" [(ngModel)]="pass"></ion-input>
-                </ion-item>
-
-                <button ion-button round (click)="checkData()">Sign In</button>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-8 push-2 col-md-2 push-md-6 margin>
+            <img src="assets/imgs/favicon.png" />
+            <img src="assets/imgs/logo.png" />
 
 
-              </ion-card-content>
-            </ion-col>
-          </ion-row>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row padding-top>
+
+          <ion-col col-10 push-1 col-md-3 push-md-6>
+
+            <ion-item margin-vertical class="clearBg" >
+              <ion-label stacked>Email</ion-label>
+              <ion-input type="email" (keyup.enter)="checkData()" [(ngModel)]="mail"></ion-input>
+            </ion-item>
+
+            <ion-item margin-vertical class="clearBg" >
+              <ion-icon name="home"></ion-icon>
+              <ion-label stacked>Password</ion-label>
+              <ion-input type="password" (keyup.enter)="checkData()" [(ngModel)]="pass"></ion-input>
+            </ion-item>
+
+            <button ion-button round (click)="checkData()">Sign In</button>
+
+
+          </ion-col>
+
+        </ion-row>
+
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
 
 
 </ion-content>

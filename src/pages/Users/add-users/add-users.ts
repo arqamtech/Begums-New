@@ -27,8 +27,7 @@ export class AddUsersPage {
     public menuCtrl: MenuController,
     public navParams: NavParams
   ) {
-    this.menuCtrl.enable(true);
-  }
+ this.menuCtrl.enable(false);  }
 
 
   checkData() {

@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/Auth/login/login';
 import * as firebase from 'firebase';
 import { PromotionPage } from '../pages/promotion/promotion';
 import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 
 
 
@@ -49,7 +50,7 @@ export class MyApp {
             if (itemSnap.exists()) {
               var welMsg = "Welcome" + " " + itemSnap.val().Name;
               // Managing Root Page
-              this.rootPage = PromotionPage;
+              this.rootPage = DashboardPage;
 
 
               this.presentToast(welMsg);
