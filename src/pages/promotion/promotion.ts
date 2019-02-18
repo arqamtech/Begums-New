@@ -100,24 +100,28 @@ export class PromotionPage {
     }).then(() => {
       this.mess = '';
       this.presentToast("SMS Sent");
-    })
+    }).then(()=>{
 
 
-    // for (let i = 0; i < this.phones.length; i++) {
-    //   let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
-    //   let phone = this.phones[i];
-    //   let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
-    //   let urr3 = this.mess;
-    //   let fU = urr1 + phone + urr2 + urr3;
-    //   this.http.get(fU, {
-    //     headers: {
-    //       "Access-Control-Allow-Origin": "*",
-    //       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
-    //     },
-    //   }).subscribe(snip => {
-    //     console.log(snip)
-    //   })
-    // }
+
+    for (let i = 0; i < this.phones.length; i++) {
+      let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
+      let phone = this.phones[i];
+      let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
+      let urr3 = this.mess;
+      let fU = urr1 + phone + urr2 + urr3;
+      this.http.get(fU, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+        },
+      }).subscribe(snip => {
+        console.log(snip)
+      })
+    }
+
+  })
+
     loading.dismiss();
 
 

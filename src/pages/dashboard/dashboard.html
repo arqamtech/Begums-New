@@ -1,36 +1,66 @@
 <ion-content padding>
 
-    <ion-slides>
-        <ion-slide>
 
-            <ion-grid>
-                <ion-row>
-                    <ion-col col-8 push-2 col-md-2 push-md-6>
-                        <img src="assets/imgs/favicon.png" />
-                        <img src="assets/imgs/logo.png" />
+    <ion-grid text-center>
+        <ion-row>
+            <ion-col col-6 push-3 col-md-2 push-md-5>
+                <img src="assets/imgs/favicon.png" />
+                <img src="assets/imgs/logo.png" />
+
+            </ion-col>
+        </ion-row>
 
 
+        <ion-row text-center>
 
-                        <ion-row padding-top>
 
-                            <ion-col col-12 col-md-6 (click)="gtClients()">
-                                <img src="assets/imgs/cLogo.png" />
-                            </ion-col>
-
-                            <ion-col col-12 col-md-6 (click)="gtPromotions()">
-                                <img src="assets/imgs/pLogo.png" />
-                            </ion-col>
+            <ion-col col-12 col-md-3 text-center push-md-5>
 
 
 
+                <!-- <div class="a">
+                    <img class="b" src="assets/imgs/favicon.png" />
+                    <p class="c">Clients</p>
+                </div>
 
-                        </ion-row>
 
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </ion-slide>
-    </ion-slides>
+                <div class="a">
+                    <img class="b" src="assets/imgs/favicon.png" />
+                    <p class="c">Clients</p>
+                </div>
+
+
+
+                <div class="a">
+                    <img class="b" src="assets/imgs/favicon.png" />
+                    <p class="c">Clients</p>
+                </div> -->
+
+                <div text-left class="imgCont">
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                
+                    <img class="iiim" src="assets/imgs/1.png" padding-bottom (click)="gtClients()" /><br>
+
+                    <img class="iiim" src="assets/imgs/2.png" padding-bottom (click)="gtPromotions()" /><br>
+
+                    <img class="iiim" src="assets/imgs/3.png" (click)="gtPromotionsS()" />
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <button ion-button round margin-top (click)="signOutConfirm()">Sign Out</button>
+            </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
 
 
 </ion-content>

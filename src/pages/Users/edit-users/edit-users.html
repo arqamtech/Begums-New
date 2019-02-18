@@ -13,24 +13,28 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col push-md-4 col-md-4 col-12>
+      <ion-col push-md-5 col-md-3 col-12>
         <ion-card class="roundCard flpAnim" margin-top>
           <ion-card-content>
 
+            <ion-navbar color="primary">
+              <ion-title>Edit Contact</ion-title>
+            </ion-navbar>
+
 
             <ion-item margin-vertical round>
-              <ion-label stacked>Name</ion-label>
+              <ion-label floating>Name</ion-label>
               <ion-input type="text" (keyup.enter)="checkData()" [(ngModel)]="user.Name"></ion-input>
             </ion-item>
 
 
             <ion-item margin-vertical round>
-              <ion-label stacked>Phone</ion-label>
+              <ion-label floating>Phone</ion-label>
               <ion-input type="number" (keyup.enter)="checkData()" [(ngModel)]="user.Phone"></ion-input>
             </ion-item>
 
             <ion-item margin-vertical round>
-              <ion-label stacked>Date of Birth</ion-label>
+              <ion-label floating>Date of Birth</ion-label>
               <ion-datetime display-format="MMM DD, YYYY" (keyup.enter)="checkData()" [(ngModel)]="user.DOB">
               </ion-datetime>
             </ion-item>

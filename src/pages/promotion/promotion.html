@@ -12,12 +12,16 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col class="mainCol" push-md-4 col-md-4 col-12>
+      <ion-col class="mainCol" push-md-5 col-md-3 col-12>
         <ion-card class="flpAnim">
           <ion-row>
-            <ion-col col-12 col-md-8 push-md-2>
+            <ion-col col-12 >
               <ion-card-content>
-                <ion-card-title>Send an SMS Promotion</ion-card-title>
+
+                  <ion-navbar color="primary">
+                      <ion-title>Send an SMS Promotion</ion-title>
+                    </ion-navbar>
+    
 
 
                 <ion-item margin-vertical round>
@@ -28,7 +32,6 @@
                 <p ion-text padding-vertical>Characters Remaining {{256 - mess.length}}</p>
                 <button ion-button round (click)="checkData()">Send SMS</button>
               </ion-card-content>
-              {{Users | json}}
             </ion-col>
           </ion-row>
         </ion-card>

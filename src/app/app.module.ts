@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PromotionPage } from '../pages/promotion/promotion';
 import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { BdsPage } from '../pages/bds/bds';
 
 
 firebase.initializeApp(firebaseCred);
@@ -35,6 +36,7 @@ firebase.initializeApp(firebaseCred);
     PromotionPage,
     SPromotionsPage,
     DashboardPage,
+    BdsPage,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ firebase.initializeApp(firebaseCred);
     PromotionPage,
     SPromotionsPage,
     DashboardPage,
+    BdsPage,
   ],
   providers: [
     StatusBar,

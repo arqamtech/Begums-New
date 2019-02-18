@@ -2,9 +2,11 @@
     // background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     // background-image: linear-gradient(to right, #f0eeeb, #edeae6, #e9e6e2, #e6e3dd, #e2dfd9);
     // background-image: linear-gradient(to right, #f0eeeb, #edeae6, #e9e6e2, #e6e3dd, #e2dfd9);
-    background-image: linear-gradient(to right, #f2efee , #e1ded8);
-    width: 100wh !important ;
-    height: 100vh !important ;
+    // background-image: linear-gradient(to right, #f2efee , #e1ded8);
+  background-image: url("../assets/imgs/bgm.png") cover !important ;
+ 
+    // width: 100wh !important ;
+    // height: 100vh !important ;
     // color: #fff !important;
     // background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB) !important ;
     // background-size: 400% 400% !important ;
@@ -17,7 +19,18 @@ h2{
 }
 .content{
     // background-image: linear-gradient(to right, #f0eeeb, #edeae6, #e9e6e2, #e6e3dd, #e2dfd9);
-    background-image: linear-gradient(to right, #f2efee , #e1ded8);
+    // background-image: linear-gradient(to right, #f2efee , #e1ded8);
+    // background-image: url("../assets/imgs/bgm.png");
+    // backgroun
+    background-image: url("../assets/imgs/bgm.png"); /* The image used */
+    
+    background-color: map-get($colors,light); /* Used if the image is unavailable */
+
+
+    background-position: initial; /* Center the image */
+    background-repeat: cover; /* Do not repeat the image */
+    background-size: auto;
+    
   }
 
   .clearBg{
@@ -61,9 +74,8 @@ ion-input{
 }
 .tableTop{
   background: map-get($colors,primary);
-  color:  map-get($colors,dark);
+  color:  white;
 }
-
 	.strip ion-row:nth-child(even){
     background: map-get($colors,light);
 	}

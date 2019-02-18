@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, MenuController 
 import * as firebase from 'firebase';
 import { UsersPage } from '../../MainPages/users/users';
 import { LoginPage } from '../../Auth/login/login';
+import { DashboardPage } from '../../dashboard/dashboard';
 
 @IonicPage()
 @Component({
@@ -32,7 +33,7 @@ export class LoaderPage {
   ionViewDidEnter(){
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.navCtrl.setRoot(UsersPage);
+        // this.navCtrl.setRoot(DashboardPage);
       }
       else {
         this.navCtrl.setRoot(LoginPage);

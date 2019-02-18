@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import { PromotionPage } from '../pages/promotion/promotion';
 import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { BdsPage } from '../pages/bds/bds';
 
 
 
@@ -49,7 +50,7 @@ export class MyApp {
           firebase.database().ref("Admin Data").child("Admins").child(user.uid).once('value', itemSnap => {
             if (itemSnap.exists()) {
               var welMsg = "Welcome" + " " + itemSnap.val().Name;
-              // Managing Root Page
+              // Managing Root Pagecd d
               this.rootPage = DashboardPage;
 
 

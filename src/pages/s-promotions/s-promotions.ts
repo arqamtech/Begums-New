@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, MenuController, LoadingController, ToastController, ModalController, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AddUsersPage } from '../Users/add-users/add-users';
 import { HttpClient } from '@angular/common/http';
+import { Slides } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -10,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 's-promotions.html',
 })
 export class SPromotionsPage {
+  @ViewChild(Slides) slides: Slides;
 
   Users: Array<any> = [];
   UsersLoaded: Array<any> = [];
@@ -31,8 +33,15 @@ export class SPromotionsPage {
     public loadingCtrl: LoadingController,
     public db: AngularFireDatabase,
   ) {
- this.menuCtrl.enable(false);    this.getUsers();
+    this.menuCtrl.enable(false);
+    this.getUsers();
   }
+
+  ionViewDidEnter() {
+    this.slides.lockSwipes(true);
+  }
+
+
   getUsers() {
 
     let loading = this.loadingCtrl.create({
@@ -116,6 +125,14 @@ export class SPromotionsPage {
     confirm.present();
   }
 
+  gtNextCheck() {
+    if (this.selArray.length) {
+      this.gtNext();
+    } else {
+      this.presentToast("Select atleast 1 Client")
+    }
+  }
+
 
   sendSMS() {
 
@@ -160,5 +177,25 @@ export class SPromotionsPage {
     });
     toast.present();
   }
+
+
+
+  /*Slides */
+  gtNext() {
+    this.slides.lockSwipes(false);
+    this.slides.slideTo(1, 500);
+    this.slides.lockSwipes(true);
+  }
+
+  gtPrev() {
+    this.slides.lockSwipes(false);
+    this.slides.slideTo(0, 500);
+    this.slides.lockSwipes(true);
+
+  }
+  /*Slides End */
+
+
+
 
 }
