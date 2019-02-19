@@ -63,7 +63,7 @@ export class UsersPage {
       this.UsersLoaded = tempArray;
       loading.dismiss();
     })
-    // this.sendBirthDayWishes();
+    this.sendBirthDayWishes();
   }
 
 
@@ -108,9 +108,11 @@ export class UsersPage {
     // }) 
 
     console.log("sending wishes");
+    console.log(this.bdArr);
     
 
     for (let i = 0; i < this.bdArr.length; i++) {
+      console.log(this.bdArr[i]);
       let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
       let phone = this.bdArr[i];
       let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
@@ -122,6 +124,8 @@ export class UsersPage {
           "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
         },
       }).subscribe(snip => {
+        console.log("messageSent");
+        
         console.log(snip)
       })
     }

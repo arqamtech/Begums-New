@@ -50,7 +50,7 @@
 
   <ion-grid class="strip" *ngIf="Users.length">
     <ion-row>
-      <ion-col push-md-2 col-md-8 col-12>
+      <ion-col  col-md-12 col-12>
         <ion-card class=" slide-in-left">
 
           <ion-row class="tableTop wT" padding>
@@ -77,7 +77,7 @@
           <div class="strip">
             <ion-row *ngFor="let u of Users">
               <ion-col grr padding-top col-12 col-md-3>
-                <h2 ion-text  color="grr" padding-left>{{u.Name}}</h2>
+                <h2 ion-text  color="grr" padding-md-left>{{u.Name}}</h2>
               </ion-col>
               <ion-col grr padding-top col-12 col-md-2>
                 <h2 ion-text text-md-center color="grr">{{u.Phone}}</h2>

@@ -38,6 +38,8 @@ export class PromotionPage {
   checkData() {
     if (this.mess) {
       this.sendConfirm();
+    }else{
+      this.presentToast("Enter a message first")
     }
   }
 
@@ -105,6 +107,8 @@ export class PromotionPage {
 
 
     for (let i = 0; i < this.phones.length; i++) {
+
+
       let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
       let phone = this.phones[i];
       let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
@@ -118,6 +122,9 @@ export class PromotionPage {
       }).subscribe(snip => {
         console.log(snip)
       })
+    
+    
+    
     }
 
   })

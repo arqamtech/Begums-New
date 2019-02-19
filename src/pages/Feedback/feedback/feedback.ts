@@ -51,7 +51,7 @@ export class FeedbackPage {
       firebase.database().ref("Users").child(this.user.key).child("LastComment").set(this.comment).then(() => {
         firebase.database().ref("Users").child(this.user.key).child("TotalRatings").set(totR).then(() => {
           firebase.database().ref("Users").child(this.user.key).child("AverageRatings").set(avgRating).then(() => {
-            // this.sendSMS();
+            this.sendSMS();
             this.presentToast("Thank you for your Feedback")
             this.close();
           });

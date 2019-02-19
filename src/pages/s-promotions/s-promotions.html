@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Promotion</ion-title>
+    <ion-title>Selective Promotion</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
 
       <ion-grid>
         <ion-row>
-          <ion-col push-md-4 col-md-4 col-12>
+          <ion-col push-md-3 col-md-6 col-12>
             <ion-card class="roundCard slide-in-left">
               <ion-card-title color="primary">Selected Clients</ion-card-title>
               <ion-card-title color="primary">{{selArray.length}} / {{Users.length}}</ion-card-title>
@@ -46,7 +46,7 @@
               </ion-card-content>
 
 
-              <button ion-button round (click)="gtNextCheck()">Done</button>
+              <button ion-button block (click)="gtNextCheck()">Done</button>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -66,7 +66,7 @@
 
       <ion-grid>
         <ion-row>
-          <ion-col class="mainCol" push-md-4 col-md-4 col-12>
+          <ion-col class="mainCol" push-md-3 col-md-6 col-12>
             <ion-card class="flpAnim">
               <ion-row>
                 <ion-col col-12 col-md-8 push-md-2>
