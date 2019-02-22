@@ -106,7 +106,7 @@ export class SPromotionsPage {
 
   sendConfirm() {
     let confirm = this.alertCtrl.create({
-      title: 'Send Message to all Clients ?',
+      title: 'Send Message to selected Clients ?',
       buttons: [
         {
           text: 'No, Its a mistake',
@@ -128,6 +128,8 @@ export class SPromotionsPage {
   gtNextCheck() {
     if (this.selArray.length) {
       this.gtNext();
+      console.log(this.selArray);
+      
     } else {
       this.presentToast("Select atleast 1 Client")
     }

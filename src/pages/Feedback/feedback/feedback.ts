@@ -64,7 +64,7 @@ export class FeedbackPage {
     let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
     let phone = this.user.Phone;
     let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
-    let urr3 = "Your Rating is " + this.rating + ". Thank You";
+    let urr3 = "Thank you for your valuable feedback! \n We always look forward to enhancing your experience at Begum's.";
     let fU = urr1 + phone + urr2 + urr3;
     this.http.get(fU, {
       headers: {

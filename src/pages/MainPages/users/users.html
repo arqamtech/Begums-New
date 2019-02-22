@@ -47,10 +47,9 @@
 
 
 
-
   <ion-grid class="strip" *ngIf="Users.length">
     <ion-row>
-      <ion-col  col-md-12 col-12>
+      <ion-col col-md-12 col-12>
         <ion-card class=" slide-in-left">
 
           <ion-row class="tableTop wT" padding>
@@ -67,17 +66,17 @@
               <h2 ion-text text-md-center color="tableTopC">AVG RATING</h2>
             </ion-col>
             <ion-col col-12 col-md-2>
-              <h2 ion-text text-md-center color="tableTopC">FEEDBACK</h2>
+              <h2 ion-text text-md-center color="tableTopC">EDIT</h2>
             </ion-col>
             <ion-col col-12 col-md-1>
-              <h2 ion-text text-md-center color="tableTopC">EDIT</h2>
+              <h2 ion-text text-md-center color="tableTopC">FEEDBACK</h2>
             </ion-col>
           </ion-row>
 
           <div class="strip">
             <ion-row *ngFor="let u of Users">
               <ion-col grr padding-top col-12 col-md-3>
-                <h2 ion-text  color="grr" padding-md-left>{{u.Name}}</h2>
+                <h2 ion-text color="grr" padding-md-left>{{u.Name}}</h2>
               </ion-col>
               <ion-col grr padding-top col-12 col-md-2>
                 <h2 ion-text text-md-center color="grr">{{u.Phone}}</h2>
@@ -100,8 +99,8 @@
                   <ion-icon name="md-create"></ion-icon>
                 </button>
               </ion-col>
-                <ion-col col-12 col-md-1 text-md-center>
-                    <button ion-button padding-right clear (click)="feedback(u)">
+              <ion-col col-12 col-md-1 text-md-center>
+                <button ion-button padding-right clear (click)="feedback(u)">
                   <ion-icon name="md-star"></ion-icon>
                 </button>
 

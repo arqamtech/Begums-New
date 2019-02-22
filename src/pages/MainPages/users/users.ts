@@ -45,7 +45,7 @@ export class UsersPage {
     loading.present();
 
 
-    this.db.list("Users").snapshotChanges().subscribe(snap => {
+    this.db.list("Users", ref => ref.orderByChild("Name")).snapshotChanges().subscribe(snap => {
       let tempArray: Array<any> = [];
       snap.forEach(snip => {
         let temp: any = snip.payload.val();
@@ -53,7 +53,7 @@ export class UsersPage {
 
         temp.nDOB = moment(temp.DOB).format("DDMM")
         if (temp.nDOB == this.td) {
-          this.bdArr.push(temp.Phone)
+          this.bdArr.push(temp)
         }
 
 
@@ -93,10 +93,10 @@ export class UsersPage {
 
   sendBirthDayWishes() {
 
-    let loading = this.loadingCtrl.create({
-      content: 'Sending Wishes ...'
-    });
-    loading.present();
+    // let loading = this.loadingCtrl.create({
+    //   content: 'Sending Wishes ...'
+    // });
+    // loading.present();
 
 
     // firebase.database().ref("Promotions").child("To All").push({
@@ -107,29 +107,46 @@ export class UsersPage {
     //   this.presentToast("SMS Sent");
     // }) 
 
-    console.log("sending wishes");
-    console.log(this.bdArr);
-    
+    // console.log(this.bdArr);
+    // console.log(this.bdArr);
+    // if (this.bdArr.length) {
 
-    for (let i = 0; i < this.bdArr.length; i++) {
-      console.log(this.bdArr[i]);
-      let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
-      let phone = this.bdArr[i];
-      let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
-      let urr3 = "Happy Birthday";
-      let fU = urr1 + phone + urr2 + urr3;
-      this.http.get(fU, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
-        },
-      }).subscribe(snip => {
-        console.log("messageSent");
-        
-        console.log(snip)
-      })
-    }
-    loading.dismiss();
+    // this.bdArr.forEach(itemSnap => {
+    //   console.log(itemSnap.Name);
+
+    // });
+    //   console.log("in if loop");
+
+    //   for(let i=0;i<5;i++){
+    //     console.log(this.bdArr);
+
+    //   }
+    // }
+
+    // for (let i = 0; i < this.bdArr.length; i++) {
+    //   console.log("sending wishes");
+
+    //   console.log(this.bdArr[i]);
+
+    // let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
+    // let phone = this.bdArr[i];
+    // let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
+    // let urr3 = "Dear" + /*Name*/
+
+    // ",\nYour special day is fast approaching and we at Begum's, would love to make it memorable!\nAvail a 25% discount across our range of services and let the celebration be all about you!";
+    // let fU = urr1 + phone + urr2 + urr3;
+    // this.http.get(fU, {
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+    //   },
+    // }).subscribe(snip => {
+    //   console.log("messageSent");
+
+    //   console.log(snip)
+    // })
+    // }
+    // loading.dismiss();
 
   }
 
