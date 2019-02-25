@@ -6,6 +6,10 @@ import { EditUsersPage } from '../../Users/edit-users/edit-users';
 import { FeedbackPage } from '../../Feedback/feedback/feedback';
 import moment from 'moment';
 import { HttpClient } from '@angular/common/http';
+import * as firebase from 'firebase';
+import { UserDetailsPage } from '../../user-details/user-details';
+
+
 
 @IonicPage()
 @Component({
@@ -53,7 +57,48 @@ export class UsersPage {
 
         temp.nDOB = moment(temp.DOB).format("DDMM")
         if (temp.nDOB == this.td) {
-          this.bdArr.push(temp)
+
+
+
+          firebase.database().ref("BDs").child(moment().format("YYYYMMDD")).child(temp.Phone).once("value", snapSHot => {
+            if (snapSHot.exists()) {
+              console.log("Done for Today");
+
+            } else {
+
+
+
+              let urr1 = "http://api.msg91.com/api/sendhttp.php?country=91&sender=BEGUMS&route=4&mobiles="
+              let phone = temp.Phone;
+              let urr2 = "&authkey=248515ASS3bXdTM6iH5bf6582b&message=";
+              let urr3 = "Dear" + " " + temp.Name + ",\nYour special day is fast approaching and we at Begum's, would love to make it memorable!\n  Avail a 25% discount across our range of services and let the celebration be all about you!";
+              let fU = urr1 + phone + urr2 + urr3;
+              this.http.get(fU, {
+                headers: {
+                  "Access-Control-Allow-Origin": "*",
+                  "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+                },
+              }).subscribe(snip => {
+                console.log("messageSent");
+
+                console.log(snip)
+              })
+
+              firebase.database().ref("BDs").child(moment().format("YYYYMMDD")).child(temp.Phone).set(true);
+
+
+
+
+
+
+
+            }
+
+          })
+
+
+
+
         }
 
 
@@ -62,6 +107,7 @@ export class UsersPage {
       this.Users = tempArray;
       this.UsersLoaded = tempArray;
       loading.dismiss();
+
     })
     this.sendBirthDayWishes();
   }
@@ -92,6 +138,42 @@ export class UsersPage {
   }
 
   sendBirthDayWishes() {
+
+
+
+
+
+    // let loading = this.loadingCtrl.create({
+    //   content: 'Sending Wishes ...'
+    // });
+    // loading.present();
+    // console.log(this.bdArr.length);
+
+    // for (let i = 0; i < this.bdArr.length; i++) {
+    //   console.log(this.bdArr[i]);
+
+    // }
+    // loading.dismiss();
+
+
+
+    // firebase.database().ref("BDs").child(moment().format("YYYYMMDD")).once("value", snapSHot => {
+    //   if (snapSHot.exists()) {
+    //     console.log("Done for Today");
+
+    //   } else {
+
+
+
+
+
+
+    //     firebase.database().ref("BDs").child(moment().format("YYYYMMDD")).set(true);
+    //   }
+
+    // })
+
+
 
     // let loading = this.loadingCtrl.create({
     //   content: 'Sending Wishes ...'
@@ -155,7 +237,7 @@ export class UsersPage {
 
 
 
-  editUser(u) { this.navCtrl.push(EditUsersPage, { user: u }); }
+  userDetails(u) { this.navCtrl.push(UserDetailsPage, { user: u }); }
   addUser() { this.navCtrl.push(AddUsersPage); }
 
   presentToast(msg) {

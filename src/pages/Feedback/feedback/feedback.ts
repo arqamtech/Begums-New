@@ -38,6 +38,12 @@ export class FeedbackPage {
 
 
   submitRating() {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Uploading Feedback...'
+    });
+    loading.present();
+
     let totR: number = 1;
     if (this.user.TotalRatings) {
       totR = +this.user.TotalRatings + 1;
@@ -52,8 +58,10 @@ export class FeedbackPage {
         firebase.database().ref("Users").child(this.user.key).child("TotalRatings").set(totR).then(() => {
           firebase.database().ref("Users").child(this.user.key).child("AverageRatings").set(avgRating).then(() => {
             this.sendSMS();
-            this.presentToast("Thank you for your Feedback")
+          }).then(() => {
             this.close();
+            loading.dismiss();
+            this.presentToast("Thank you for your Feedback")
           });
         });
       });

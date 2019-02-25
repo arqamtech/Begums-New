@@ -129,7 +129,7 @@ export class SPromotionsPage {
     if (this.selArray.length) {
       this.gtNext();
       console.log(this.selArray);
-      
+
     } else {
       this.presentToast("Select atleast 1 Client")
     }
@@ -161,6 +161,8 @@ export class SPromotionsPage {
       })
     }
     this.mess = '';
+    this.presentToast("Message Sent");
+    this.navCtrl.pop();
     loading.dismiss();
 
 

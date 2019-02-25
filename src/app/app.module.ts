@@ -20,6 +20,7 @@ import { PromotionPage } from '../pages/promotion/promotion';
 import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { BdsPage } from '../pages/bds/bds';
+import { UserDetailsPage } from '../pages/user-details/user-details';
 
 
 firebase.initializeApp(firebaseCred);
@@ -37,6 +38,7 @@ firebase.initializeApp(firebaseCred);
     SPromotionsPage,
     DashboardPage,
     BdsPage,
+    UserDetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ firebase.initializeApp(firebaseCred);
     SPromotionsPage,
     DashboardPage,
     BdsPage,
+    UserDetailsPage,
   ],
   providers: [
     StatusBar,

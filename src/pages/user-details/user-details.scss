@@ -1,0 +1,29 @@
+page-user-details {
+    .nvT{
+        color: white;
+      }
+      .card {
+            margin: auto;
+            position : relative;
+            top: 5%;
+            text-align: center;
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            border-radius: 10px;
+            -webkit-animation: flipinx 1s ease-out 0s 1 normal both;
+            animation: flipinx 1s ease-out 0s 1 normal both;
+           }
+           ion-label{
+             font-weight: bold !important ;
+           }
+    
+           ion-item{
+             border-bottom: 1px solid map-get($colors,primary) !important ;
+            }
+            ion-input{
+              padding-left: 5%;
+              font-size: 24px;
+              font-weight: 200;
+            }
+    
+}
