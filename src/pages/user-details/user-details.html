@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Add Client</ion-title>
+    <ion-title>Client Details</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -54,8 +54,10 @@
                   <p ion-text item-end>{{user.AverageRatings}}</p>
                 </ion-item>
 
+                <button ion-button float-left clear (click)="delConfirmUser(u)">
+                  Delete
+                </button>
                 <button ion-button float-right round (click)="editClient()">Edit Client</button>
-
 
               </ion-card-content>
             </ion-col>

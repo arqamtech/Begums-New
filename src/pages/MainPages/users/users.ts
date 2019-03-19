@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, MenuController, LoadingController, ToastController, ModalController } from 'ionic-angular';
-import { AddUsersPage } from '../../Users/add-users/add-users';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { EditUsersPage } from '../../Users/edit-users/edit-users';
-import { FeedbackPage } from '../../Feedback/feedback/feedback';
 import moment from 'moment';
 import { HttpClient } from '@angular/common/http';
 import * as firebase from 'firebase';
-import { UserDetailsPage } from '../../user-details/user-details';
 
 
 
@@ -114,7 +110,7 @@ export class UsersPage {
 
 
   feedback(u) {
-    const modal = this.modalController.create(FeedbackPage, { user: u })
+    const modal = this.modalController.create("FeedbackPage", { user: u })
     modal.present();
   }
 
@@ -237,8 +233,8 @@ export class UsersPage {
 
 
 
-  userDetails(u) { this.navCtrl.push(UserDetailsPage, { user: u }); }
-  addUser() { this.navCtrl.push(AddUsersPage); }
+  userDetails(u) { this.navCtrl.push("UserDetailsPage", { user: u }); }
+  addUser() { this.navCtrl.push("AddUsersPage"); }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

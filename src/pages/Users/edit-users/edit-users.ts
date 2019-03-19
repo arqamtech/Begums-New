@@ -87,7 +87,7 @@ export class EditUsersPage {
     loading.present();
 
     firebase.database().ref("Users").child(this.user.key).remove().then(() => {
-      this.navCtrl.pop();
+      this.navCtrl.popTo("UsersPage");
       loading.dismiss();
       this.presentToast(this.user.Name + " " + "deleted");
     })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController, LoadingController, ModalController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import moment from 'moment';
@@ -24,10 +24,12 @@ export class AddUsersPage {
     public db: AngularFireDatabase,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
+    public modalController: ModalController,
     public menuCtrl: MenuController,
     public navParams: NavParams
   ) {
- this.menuCtrl.enable(false);  }
+    this.menuCtrl.enable(false);
+  }
 
 
   checkData() {
@@ -53,13 +55,21 @@ export class AddUsersPage {
       DOB: this.dob,
       Phone: this.phone,
       TimeStamp: moment().format()
-    }).then(() => {
-      this.navCtrl.pop().then(() => {
+    }).then((res) => {
+      firebase.database().ref("Users").child(res.key).once("value", itemSnap => {
         this.presentToast(this.userLabel + " " + "Added")
         loading.dismiss();
-
+        let tt = itemSnap.val();
+        tt.key = itemSnap.key;
+        tt.LastComment= "Not Available";
+        tt.LastRating= "Not Available";
+        tt.AverageRatings= "Not Available";
+        tt.TotalRatings=0;
+        this.navCtrl.pop().then(()=>{
+          const modal = this.modalController.create("FeedbackPage", { user: tt })
+          modal.present();
+        });
       });
-
     })
   }
 

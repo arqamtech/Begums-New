@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, MenuController, LoadingController, ToastController, ModalController, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { AddUsersPage } from '../Users/add-users/add-users';
 import { HttpClient } from '@angular/common/http';
 import { Slides } from 'ionic-angular';
 
@@ -170,7 +169,7 @@ export class SPromotionsPage {
 
 
 
-  addUser() { this.navCtrl.push(AddUsersPage); }
+  addUser() { this.navCtrl.push("AddUsersPage"); }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

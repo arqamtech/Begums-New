@@ -2,14 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, ToastController, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoaderPage } from '../pages/Support/loader/loader';
-import { UsersPage } from '../pages/MainPages/users/users';
-import { LoginPage } from '../pages/Auth/login/login';
 import * as firebase from 'firebase';
-import { PromotionPage } from '../pages/promotion/promotion';
-import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
-import { DashboardPage } from '../pages/dashboard/dashboard';
-import { BdsPage } from '../pages/bds/bds';
 
 
 
@@ -19,7 +12,7 @@ import { BdsPage } from '../pages/bds/bds';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoaderPage;
+  rootPage: any = "LoaderPage";
   activePage: any;
 
   full: boolean = true;
@@ -36,9 +29,9 @@ export class MyApp {
   ) {
     this.initializeApp();
     this.pages = [
-      { title: 'Clients', component: UsersPage, icon: "ios-people" },
-      { title: 'Promotions', component: PromotionPage, icon: "text" },
-      { title: 'Selective Promotions', component: SPromotionsPage, icon: "text" },
+      { title: 'Clients', component: "UsersPage", icon: "ios-people" },
+      { title: 'Promotions', component: "PromotionPage", icon: "text" },
+      { title: 'Selective Promotions', component: "SPromotionsPage", icon: "text" },
     ];
     this.activePage = this.pages[2];
   }
@@ -51,20 +44,20 @@ export class MyApp {
             if (itemSnap.exists()) {
               var welMsg = "Welcome" + " " + itemSnap.val().Name;
               // Managing Root Pagecd d
-              this.rootPage = DashboardPage;
+              this.rootPage = "DashboardPage";
 
 
               this.presentToast(welMsg);
             } else {
               firebase.auth().signOut().then(() => {
-                this.rootPage = LoginPage;
+                this.rootPage = "LoginPage";
                 this.presentToast("You are not registered a Admin")
               })
             }
           });
         }
         else {
-          this.rootPage = LoginPage;
+          this.rootPage = "LoginPage";
         }
       });
     });
@@ -112,7 +105,7 @@ export class MyApp {
 
   signOut() {
     firebase.auth().signOut().then(() => {
-      this.nav.setRoot(LoginPage);
+      this.nav.setRoot("LoginPage");
       this.presentToast("Signed Out");
     }).catch((error) => {
       console.log(error.message);

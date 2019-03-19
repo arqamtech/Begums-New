@@ -8,19 +8,8 @@ import * as firebase from 'firebase';
 import { firebaseCred } from './firebaseCred';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { LoginPage } from '../pages/Auth/login/login';
-import { UsersPage } from '../pages/MainPages/users/users';
-import { AddUsersPage } from '../pages/Users/add-users/add-users';
-import { EditUsersPage } from '../pages/Users/edit-users/edit-users';
-import { LoaderPage } from '../pages/Support/loader/loader';
-import { FeedbackPage } from '../pages/Feedback/feedback/feedback';
 import { StarRatingModule } from 'ionic3-star-rating';
 import { HttpClientModule } from '@angular/common/http';
-import { PromotionPage } from '../pages/promotion/promotion';
-import { SPromotionsPage } from '../pages/s-promotions/s-promotions';
-import { DashboardPage } from '../pages/dashboard/dashboard';
-import { BdsPage } from '../pages/bds/bds';
-import { UserDetailsPage } from '../pages/user-details/user-details';
 
 
 firebase.initializeApp(firebaseCred);
@@ -28,17 +17,6 @@ firebase.initializeApp(firebaseCred);
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    UsersPage,
-    AddUsersPage,
-    EditUsersPage,
-    FeedbackPage,
-    LoaderPage,
-    PromotionPage,
-    SPromotionsPage,
-    DashboardPage,
-    BdsPage,
-    UserDetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -53,17 +31,6 @@ firebase.initializeApp(firebaseCred);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    UsersPage,
-    AddUsersPage,
-    EditUsersPage,
-    FeedbackPage,
-    LoaderPage,
-    PromotionPage,
-    SPromotionsPage,
-    DashboardPage,
-    BdsPage,
-    UserDetailsPage,
   ],
   providers: [
     StatusBar,

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-feedback',
@@ -43,20 +44,21 @@ export class FeedbackPage {
       content: 'Uploading Feedback...'
     });
     loading.present();
-
+    let avgRating = 0; 
     let totR: number = 1;
     if (this.user.TotalRatings) {
       totR = +this.user.TotalRatings + 1;
     }
-    let avgRating = this.rating;
     if (this.user.AverageRatings) {
       avgRating = ((this.user.AverageRatings * this.user.TotalRatings) + this.rating) / totR;
+    }else{
+      avgRating = this.rating;
     }
 
     firebase.database().ref("Users").child(this.user.key).child("LastRating").set(this.rating).then(() => {
       firebase.database().ref("Users").child(this.user.key).child("LastComment").set(this.comment).then(() => {
         firebase.database().ref("Users").child(this.user.key).child("TotalRatings").set(totR).then(() => {
-          firebase.database().ref("Users").child(this.user.key).child("AverageRatings").set(avgRating).then(() => {
+          firebase.database().ref("Users").child(this.user.key).child("AverageRatings").set(avgRating.toString()).then(() => {
             this.sendSMS();
           }).then(() => {
             this.close();
@@ -85,6 +87,9 @@ export class FeedbackPage {
   }
 
   close() {
+    this.viewCtrl.onDidDismiss(() => {
+      this.navCtrl.popTo("UsersPage");
+    });
     this.viewCtrl.dismiss();
   }
 

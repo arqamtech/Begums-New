@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, ToastController, AlertController } from 'ionic-angular';
-import { UsersPage } from '../MainPages/users/users';
-import { PromotionPage } from '../promotion/promotion';
 import * as firebase from 'firebase';
-import { LoginPage } from '../Auth/login/login';
-import { SPromotionsPage } from '../s-promotions/s-promotions';
+
 
 
 @IonicPage()
@@ -28,9 +25,9 @@ export class DashboardPage {
 
 
 
-  gtClients() { this.navCtrl.push(UsersPage); }
-  gtPromotions() { this.navCtrl.push(PromotionPage); }
-  gtPromotionsS() { this.navCtrl.push(SPromotionsPage); }
+  gtClients() { this.navCtrl.push("UsersPage"); }
+  gtPromotions() { this.navCtrl.push("PromotionPage"); }
+  gtPromotionsS() { this.navCtrl.push("SPromotionsPage"); }
 
 
 
@@ -58,7 +55,7 @@ export class DashboardPage {
 
   signOut() {
     firebase.auth().signOut().then(() => {
-      this.navCtrl.setRoot(LoginPage);
+      this.navCtrl.setRoot("LoginPage");
       this.presentToast("Signed Out");
     }).catch((error) => {
       console.log(error.message);

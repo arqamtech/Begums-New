@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { UsersPage } from '../../MainPages/users/users';
-import { LoginPage } from '../../Auth/login/login';
-import { DashboardPage } from '../../dashboard/dashboard';
+
 
 @IonicPage()
 @Component({
@@ -36,7 +34,7 @@ export class LoaderPage {
         // this.navCtrl.setRoot(DashboardPage);
       }
       else {
-        this.navCtrl.setRoot(LoginPage);
+        this.navCtrl.setRoot("LoginPage");
       }
     });
 
