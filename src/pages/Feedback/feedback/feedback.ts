@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-feedback',
@@ -44,14 +43,14 @@ export class FeedbackPage {
       content: 'Uploading Feedback...'
     });
     loading.present();
-    let avgRating = 0; 
+    let avgRating = 0;
     let totR: number = 1;
     if (this.user.TotalRatings) {
       totR = +this.user.TotalRatings + 1;
     }
     if (this.user.AverageRatings) {
       avgRating = ((this.user.AverageRatings * this.user.TotalRatings) + this.rating) / totR;
-    }else{
+    } else {
       avgRating = this.rating;
     }
 
